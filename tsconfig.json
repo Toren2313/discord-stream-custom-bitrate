@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+      "target": "ES2016",
+      "module": "commonjs",
+      "declaration": false,
+      "noImplicitAny": false,
+      "removeComments": true,
+      "noLib": false,
+      "outDir": "./dist",
+      "esModuleInterop": true
+  },
+  "include": [
+      "**/*"
+  ],
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+  ]}
+  
