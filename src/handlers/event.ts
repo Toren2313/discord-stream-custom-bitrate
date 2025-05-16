@@ -12,9 +12,8 @@ class EventHandler {
   }
   public async handle(): Promise<void> {
     for (const _event of this._events) {
-      _event.once
-        ? this._client.once(_event.name, async () => await _event.run())
-        : this._client.on(_event.name, async (data) => await _event.run());
+      if (_event.once) this._client.once(_event.name, async () => await _event.run());
+      else this._client.on(_event.name, async () => await _event.run());
     }
   }
 }

@@ -31,7 +31,7 @@ class MessageHandler {
           break;
         }
 
-        case 10: {
+        case 11: {
           this._client.emit("event.heartbeatAck", this._messageData, this._client.ws);
           break;
         }

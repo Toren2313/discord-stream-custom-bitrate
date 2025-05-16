@@ -11,7 +11,7 @@ class DiscordClient extends EventEmitter {
   private _eventHandler: EventHandler;
 
   public ws: WebSocket;
-  public isConnected: boolean = false;
+  public isConnected = false;
 
   protected constructor() {
     super();
