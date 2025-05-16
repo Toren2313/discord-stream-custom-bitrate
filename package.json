@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@types/events": "^3.0.3",
     "ws": "^8.18.2"
   },
   "devDependencies": {
