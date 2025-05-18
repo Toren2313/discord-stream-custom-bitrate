@@ -1,9 +1,10 @@
-import { EventEmitter } from "events";
 import WebSocket from "ws";
+import EventEmitter from "events";
 import MessageHandler from "./handlers/message";
 import EventHandler from "./handlers/event";
+import { EventMap } from "./interfaces/EventMap";
 
-class DiscordClient extends EventEmitter {
+class DiscordClient extends EventEmitter<EventMap> {
   private static _instance: DiscordClient;
   private readonly _url: string = "wss://gateway.discord.gg/?v=10&encoding=json";
 

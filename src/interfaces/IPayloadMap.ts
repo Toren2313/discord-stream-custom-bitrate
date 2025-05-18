@@ -3,8 +3,6 @@ import { IHelloData } from "./IHelloData";
 
 export interface IPayloadMap {
   hello: IHelloData;
-  heartbeat_ack: IHeartBeatAck;
-  number: number;
+  heartbeatAck: IHeartBeatAck;
+  heartbeat: number;
 }
-
-// export type opCodoes =

@@ -4,7 +4,6 @@ import { IPayload } from "../interfaces/IPayload";
 
 class MessageHandler {
   private _client: DiscordClient;
-  private _messageData: IPayload;
 
   constructor(client: DiscordClient) {
     this._client = client;
@@ -12,7 +11,7 @@ class MessageHandler {
 
   public async handle(): Promise<void> {
     this._client.ws.on("message", (data: RawData) => {
-      this._messageData = this.parseData(data);
+      const payload = this.parseData(data);
 
       /**
        *  * 1 - heartbeat (recive/send)
@@ -20,19 +19,22 @@ class MessageHandler {
        *  * 11 - hearbeat ACK (recive)
        */
 
-      switch (this._messageData.op) {
+      switch (payload.op) {
         case 1: {
-          this._client.emit("event.heartbeat", this._messageData, this._client.ws);
+          const heartBeatPayload = payload as IPayload<"heartbeat">;
+          this._client.emit("heartbeat", heartBeatPayload);
           break;
         }
 
         case 10: {
-          this._client.emit("event.hello", this._messageData, this._client.ws);
+          const helloPayload = payload as IPayload<"hello">;
+          this._client.emit("hello", helloPayload);
           break;
         }
 
         case 11: {
-          this._client.emit("event.heartbeatAck", this._messageData, this._client.ws);
+          const heartbeatAckPayload = payload as IPayload<"heartbeatAck">;
+          this._client.emit("heartbeatAck", heartbeatAckPayload);
           break;
         }
       }

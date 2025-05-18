@@ -1,5 +1,7 @@
+import { EventMap } from "./EventMap";
+
 export default interface IEvent {
-  name: string;
-  run(...args): Promise<void>;
+  name: keyof EventMap;
+  run(...args: unknown[]): Promise<void>;
   once: boolean;
 }
