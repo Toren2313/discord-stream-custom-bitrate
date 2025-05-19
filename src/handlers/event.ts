@@ -12,7 +12,8 @@ class EventHandler {
   }
   public async handle(): Promise<void> {
     for (const _event of this._events) {
-      const listener = (...args: unknown[]) => _event.run(...(args as Parameters<typeof _event.run>));
+      const listener = (client: DiscordClient, ...args: unknown[]) =>
+        _event.run(client, ...(args as Parameters<typeof _event.run>));
       if (_event.once) {
         this._client.once(_event.name, listener);
       } else {

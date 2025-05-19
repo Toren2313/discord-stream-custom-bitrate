@@ -22,19 +22,19 @@ class MessageHandler {
       switch (payload.op) {
         case 1: {
           const heartBeatPayload = payload as IPayload<"heartbeat">;
-          this._client.emit("heartbeat", heartBeatPayload);
+          this._client.emit("heartbeat", this._client, heartBeatPayload);
           break;
         }
 
         case 10: {
           const helloPayload = payload as IPayload<"hello">;
-          this._client.emit("hello", helloPayload);
+          this._client.emit("hello", this._client, helloPayload);
           break;
         }
 
         case 11: {
           const heartbeatAckPayload = payload as IPayload<"heartbeatAck">;
-          this._client.emit("heartbeatAck", heartbeatAckPayload);
+          this._client.emit("heartbeatAck", this._client, heartbeatAckPayload);
           break;
         }
       }
