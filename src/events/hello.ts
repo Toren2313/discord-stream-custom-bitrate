@@ -8,10 +8,23 @@ class HelloEvent implements IEvent {
   public once = true;
 
   public async run(client: DiscordClient, ...args: IPayload<"hello">[]): Promise<void> {
-    console.log("[DISCORD] Sent hello");
+    client.interval = args[0].d.heartbeat_interval;
+    client.ws.send(
+      JSON.stringify({
+        op: 1,
+        d: null,
+      }),
+    );
 
-    const payload = args[0];
-    console.log(payload);
+    setInterval(async () => {
+      const payload: object = {
+        op: 1,
+        d: client.sequence ?? null,
+      };
+
+      await client.ws.send(JSON.stringify(payload));
+      console.log(`[201] sended heartbeat with interval: ${client.interval} and ${client.sequence} sequences`);
+    }, client.interval);
   }
 }
 

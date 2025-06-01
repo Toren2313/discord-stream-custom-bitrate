@@ -12,7 +12,10 @@ class DiscordClient extends EventEmitter<EventMap> {
   private _eventHandler: EventHandler;
 
   public ws: WebSocket;
+
   public isConnected = false;
+  public interval: number;
+  public sequence: number;
 
   protected constructor() {
     super();

@@ -1,4 +1,3 @@
-export interface IHeartbeat {
-  op: number;
-  d: number;
-}
+export type IHeartbeat = {
+  number;
+};
