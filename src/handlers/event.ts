@@ -3,10 +3,11 @@ import IEvent from "../interfaces/IEvent";
 import HelloEvent from "../events/hello";
 import HeartBeatEvent from "../events/heartbeat";
 import HeartBeatEventAck from "../events/heartbeatAck";
+import IdentifyEvent from "../events/idenitfy";
 
 class EventHandler {
   private _client: DiscordClient;
-  private _events: IEvent[] = [new HelloEvent(), new HeartBeatEvent(), new HeartBeatEventAck()];
+  private _events: IEvent[] = [new HelloEvent(), new HeartBeatEvent(), new HeartBeatEventAck(), new IdentifyEvent()];
 
   constructor(client: DiscordClient) {
     this._client = client;

@@ -25,13 +25,25 @@ class DiscordClient extends EventEmitter<EventMap> {
     this.ws = new WebSocket(this._url);
 
     this.ws.once("open", () => {
-      this.isConnected = true;
       this.init();
     });
   }
 
   private async init(): Promise<void> {
-    await Promise.all([await this._messageHandler.handle(), await this._eventHandler.handle()]);
+    await Promise.all([
+      await this._messageHandler.handle(),
+      await this._eventHandler.handle(),
+      await this.initEvents(),
+    ]);
+  }
+
+  private async initEvents(): Promise<void> {
+    const interval = setInterval(async () => {
+      if (this.isConnected) {
+        await this.emit("identify", this);
+        clearInterval(interval);
+      }
+    }, 200);
   }
 
   /**

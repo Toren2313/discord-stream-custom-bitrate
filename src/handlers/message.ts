@@ -26,6 +26,11 @@ class MessageHandler {
           console.log(`[201] heartbeat event triggered, payload: ${payload}`);
           break;
         }
+        case 2: {
+          this._client.emit("identify", this._client);
+          console.log(`[201] heartbeat event triggered, payload: ${payload}`);
+          break;
+        }
 
         case 10: {
           const helloPayload = payload as IPayload<"hello">;
@@ -41,7 +46,7 @@ class MessageHandler {
           break;
         }
         default: {
-          console.log(`[404] status code not found, payload: ${payload}}`);
+          console.log(`[404] event not found, status code: ${payload.op}  payload: ${payload}}`);
         }
       }
     });

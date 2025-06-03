@@ -24,6 +24,7 @@ class HelloEvent implements IEvent {
 
       await client.ws.send(JSON.stringify(payload));
       console.log(`[201] sended heartbeat with interval: ${client.interval} and ${client.sequence} sequences`);
+      client.isConnected = true;
     }, client.interval);
   }
 }

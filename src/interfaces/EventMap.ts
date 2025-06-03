@@ -4,6 +4,7 @@ import { IPayload } from "./IPayload";
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type EventMap = {
   hello: [DiscordClient, IPayload<"hello">];
+  identify: [DiscordClient];
   heartbeat: [DiscordClient, IPayload<"heartbeat">];
   heartbeatAck: [DiscordClient, IPayload<"heartbeatAck">];
 };
