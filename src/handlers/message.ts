@@ -1,6 +1,7 @@
 import { RawData } from "ws";
 import DiscordClient from "../client";
 import { IPayload } from "../interfaces/IPayload";
+import { writeFileSync } from "fs";
 
 class MessageHandler {
   private _client: DiscordClient;
@@ -46,7 +47,9 @@ class MessageHandler {
           break;
         }
         default: {
-          console.log(`[404] event not found, status code: ${payload.op}  payload: ${payload}}`);
+          writeFileSync("logs.txt", JSON.stringify(payload), {
+            flag: "a",
+          });
         }
       }
     });

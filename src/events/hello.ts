@@ -7,8 +7,8 @@ class HelloEvent implements IEvent {
   name: keyof EventMap = "hello";
   public once = true;
 
-  public async run(client: DiscordClient, ...args: IPayload<"hello">[]): Promise<void> {
-    client.interval = args[0].d.heartbeat_interval;
+  public async run(client: DiscordClient, payload: IPayload<"hello">): Promise<void> {
+    client.interval = payload.d.heartbeat_interval;
     client.ws.send(
       JSON.stringify({
         op: 1,

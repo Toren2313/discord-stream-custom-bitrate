@@ -5,4 +5,5 @@ export interface IPayloadMap {
   hello: IHelloData;
   heartbeatAck: IHeartBeatAck;
   heartbeat: number;
+  null: null;
 }

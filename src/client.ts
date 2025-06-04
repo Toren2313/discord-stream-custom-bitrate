@@ -38,9 +38,9 @@ class DiscordClient extends EventEmitter<EventMap> {
   }
 
   private async initEvents(): Promise<void> {
-    const interval = setInterval(async () => {
+    const interval = setInterval(() => {
       if (this.isConnected) {
-        await this.emit("identify", this);
+        this.emit("identify", this);
         clearInterval(interval);
       }
     }, 200);
