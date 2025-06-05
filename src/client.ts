@@ -3,6 +3,7 @@ import EventEmitter from "events";
 import MessageHandler from "./handlers/message";
 import EventHandler from "./handlers/event";
 import { EventMap } from "./interfaces/EventMap";
+import validateEnv from "./functions/validateEnv";
 
 class DiscordClient extends EventEmitter<EventMap> {
   private static _instance: DiscordClient;
@@ -25,6 +26,7 @@ class DiscordClient extends EventEmitter<EventMap> {
     this.ws = new WebSocket(this._url);
 
     this.ws.once("open", () => {
+      validateEnv();
       this.init();
     });
   }

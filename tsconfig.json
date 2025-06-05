@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-      "target": "ES2016",
-      "module": "commonjs",
-      "declaration": false,
-      "noImplicitAny": false,
-      "removeComments": true,
-      "noLib": false,
-      "outDir": "./dist",
-      "esModuleInterop": true
+    "target": "ES2016",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "types": [
+      "node",
+      "./env.d.ts"
+    ] /* Specify type package names to be included without being referenced in a source file. */
   },
-  "include": [
-      "**/*"
-  ],
-  "exclude": [
-      "node_modules",
-      "**/*.spec.ts"
-  ]}
-  
+  "include": ["**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

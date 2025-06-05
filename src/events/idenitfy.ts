@@ -12,7 +12,7 @@ class IdentifyEvent implements IEvent {
     const identifyPayload: object = {
       op: 2,
       d: {
-        token: "",
+        token: process.env.TOKEN,
         properties: {
           os: "linux",
           browser: "firefox",
